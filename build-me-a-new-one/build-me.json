@@ -1,0 +1,9 @@
+{
+    "simple_web_project": {
+        "_": [
+            "index.html",
+            "style.css",
+            "script.js"
+        ]
+    }
+}
