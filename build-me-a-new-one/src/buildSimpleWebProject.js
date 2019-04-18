@@ -24,20 +24,26 @@ fs.readFile(path.resolve(process.cwd(), configFileName), "utf8", (err, data) => 
 function createProject(configuration) {
     fs.mkdir(path.resolve(process.cwd(), simpleWebProjectDirectory), (err) => console.log(err));
 
-    Object.keys(configuration).forEach(key => {
+    Object.keys(configuration[simpleWebProjectKey]).forEach(key => {
         var folder = key;
         const contents = configuration[key];
 
         if (key == "_") {
             folder = path.resolve(process.cwd(), simpleWebProjectDirectory);
         } else {
-            var stringPath = process.cwd() + "/" + simpleWebProjectDirectory;
-            key.split("/").forEach(part => stringPath += (part + "/"));
-            console.log(typeof stringPath);
+            var stringPath = [];
+            stringPath.push(process.cwd());
+            stringPath.push(simpleWebProjectDirectory);
+            key.split("/").forEach(part => {
+                stringPath.push(part);
+            });
+            
+            console.log(stringPath);
+
             folder = path.resolve(path)
         }
 
-        fs.mkdir(folder);
+        fs.mkdir(folder, (err) => console.log(err));
 
         for (file in contents) {
             if (file.endsWith(".html")) {
