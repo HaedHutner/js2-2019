@@ -25,7 +25,7 @@ function createProject(configuration) {
 
     Object.keys(configuration[simpleWebProjectKey]).forEach(key => {
         var folder = key;
-        const contents = configuration[key];
+        const contents = configuration[simpleWebProjectKey][key];
 
         if (key == "_") {
             // Create path from the simple web project folder ( This is the root directory for the project )
@@ -46,24 +46,39 @@ function createProject(configuration) {
             });
 
             // Create the path
-            folder = path.resolve(stringPath)
+            folder = path.resolve(stringPath);
         }
 
-        // Create the folder, if a problem occurs, log it
-        fs.mkdir(folder, (err) => { if (err) console.log(err) });
+        // Check if folder exists already
+        // If it doesn't, create it and then create the contents,
+        // otherwise, just create the contents
+        if (!fs.existsSync(folder)) {
+            fs.mkdir(folder, (err) => {
+                // If an error occured while creating the folder, log it
+                if (err) {
+                    console.log(err);
+                } else {
+                    createContents(folder, contents);
+                }
+            });
+        } else {
+            createContents(folder, contents);
+        }
+    });
+}
 
-        for (file in contents) {
-            if (file.endsWith(".html")) {
-                createHTML(file, folder.toString());
-            }
+function createContents(folder, contents) {
+    contents.forEach(file => {
+        if (file.endsWith(".html")) {
+            createHTML(file, folder.toString());
+        }
 
-            if (file.endsWith(".css")) {
-                createCSS(file, folder.toString());
-            }
+        if (file.endsWith(".css")) {
+            createCSS(file, folder.toString());
+        }
 
-            if (file.endsWith(".js")) {
-                createJS(file, folder.toString());
-            }
+        if (file.endsWith(".js")) {
+            createJS(file, folder.toString());
         }
     });
 }
