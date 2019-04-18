@@ -1,0 +1,1 @@
+const simpleWebProjectKey = "simple_web_project";

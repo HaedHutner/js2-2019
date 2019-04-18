@@ -1,0 +1,15 @@
+{​
+    "bootstrap_web_project"​: {​
+        "_"​: [​
+            "index.html"​
+        ],​
+        "style"​: [​
+            "@bootstrap"​, ​
+            "style.css"
+        ​],​
+        "scripts"​: [​
+            "@jquery"​, ​
+            "script.js"​
+        ]    
+    }
+}

@@ -1,0 +1,1 @@
+const bootstrapWebAppKey = "bootstrap_web_app";

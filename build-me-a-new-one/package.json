@@ -1,0 +1,11 @@
+{
+  "name": "build-me-a-new-one",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "simple-web-project": "node src/buildSimpleWebProject.js",
+    "bootstrap-web-app": "node src/buildBootstrapWebApp.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
