@@ -4,6 +4,12 @@
             "index.html",
             "style.css",
             "script.js"
+        ],
+        "js": [
+            "otherScript.js"
+        ],
+        "css": [
+            "otherStyle.css"
         ]
     }
 }
