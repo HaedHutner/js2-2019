@@ -6,6 +6,6 @@
     "simple-web-project": "node src/buildSimpleWebProject.js",
     "bootstrap-web-app": "node src/buildBootstrapWebApp.js"
   },
-  "author": "",
+  "author": "Miroslav Vasilev",
   "license": "ISC"
 }
